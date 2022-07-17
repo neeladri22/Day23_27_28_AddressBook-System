@@ -15,6 +15,9 @@ namespace AddressBookSystem
 
             // Creating the Contact
             AddressBook.createContactPerson();
+
+            //Adding a New Contact to addressbook
+            AddressBook.AddNewContact();
         }
     }
 }

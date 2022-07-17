@@ -8,6 +8,14 @@ namespace AddressBookSystem
 {
     public class AddressBook
     {
+        // Creating list for Storing the Contacts of Each Persons details
+        public static List<Contact> AddressDetails = new List<Contact>();
+
+        // Creating the dictionary to save the Multiple conatact in Addressbook
+        public static Dictionary<string, Contact> ContactsDetails = new Dictionary<string, Contact>();
+
+        public static Contact person = new Contact();
+
         //Creating the method for creating the contact person
         public static void createContactPerson()
         {
@@ -45,5 +53,37 @@ namespace AddressBookSystem
             Console.WriteLine("Mobile Number :" + person.MobileNumber);
             Console.WriteLine("E-Mail :" + person.Email);
         }
+
+        // /Creating the method for Adding new contact
+        public static void AddNewContact()
+        {
+            Console.Write("Enter First Name: ");
+            person.FirstName = Console.ReadLine();
+
+            Console.Write("Enter Last Name: ");
+            person.LastName = Console.ReadLine();
+
+            Console.Write("Enter Address : ");
+            person.Address = Console.ReadLine();
+
+            Console.Write("Enter City: ");
+            person.City = Console.ReadLine();
+
+            Console.Write("Enter State: ");
+            person.State = Console.ReadLine();
+
+            Console.Write("Enter Zip Code: ");
+            person.ZipCode = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter Mobile Number: ");
+            person.MobileNumber = long.Parse(Console.ReadLine());
+
+            Console.Write("Enter E-Mail: ");
+            person.Email = Console.ReadLine();
+
+           
+            PrintContact(person);
+            Console.WriteLine("\n****************************\n");
+
+        }
     }
-}
