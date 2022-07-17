@@ -54,7 +54,7 @@ namespace AddressBookSystem
             Console.WriteLine("E-Mail :" + person.Email);
         }
 
-        // /Creating the method for Adding new contact
+        // Creating the method for Adding new contact
         public static void AddNewContact()
         {
             Console.Write("Enter First Name: ");
@@ -81,9 +81,40 @@ namespace AddressBookSystem
             Console.Write("Enter E-Mail: ");
             person.Email = Console.ReadLine();
 
-           
+            Console.WriteLine("\n************************************\n");
             PrintContact(person);
-            Console.WriteLine("\n****************************\n");
+           
+            AddressDetails.Add(person);
+        }
+
+        // /Creating the method for editing the existing contact
+        public static void EditExistingContact()
+        {
+            Console.WriteLine("Enter the First Name of the person you would like to Edit.");
+
+            string firstName = Console.ReadLine();
+            Contact person = AddressDetails.FirstOrDefault(x => x.FirstName.ToLower() == firstName.ToLower());
+            if (person == null)
+            {
+                Console.WriteLine("That person could not be found. Press any key to continue");
+                Console.ReadKey();
+                return;
+            }
+
+            Console.WriteLine("\nDetails of the entered person is:\n");
+             PrintContact(person);
+            Console.WriteLine("\n************************************\n");
+
+            Console.WriteLine("\n");
+            Console.WriteLine("Are you sure you want to Edit this person from your address book? (Y/N)");
+            string c = Console.ReadLine().ToLower();
+            if (c == "y")
+            {
+                AddressDetails.Remove(person);
+            }
+            AddressBook.AddNewContact();
+            Console.WriteLine("Person details Edited Successfully. Press any key to continue.");
+            Console.ReadKey();
 
         }
     }
