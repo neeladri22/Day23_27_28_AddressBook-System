@@ -1,10 +1,14 @@
 ﻿
+using CsvHelper;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace AddressBookSystem
 {
@@ -392,6 +396,28 @@ namespace AddressBookSystem
                         "Mobile Number : " + person.MobileNumber + "\n" +
                         "Email : " + person.Email);
                 }
+            }
+        }
+        //Write the Persons details in AddtressBook to CSV file And read from the person details from JSON File.
+        public static void WriteAddressbookintoJSONFile()
+        {
+            string path = @"F:\h\Day23_27_28 AddressBok\AddressBookSystem\AddressBookSystem\AddressBook.json";
+
+            Console.WriteLine("********* Reading the File and Write to JSON File **********");
+
+            //Writing the User data in to JSON file
+            JsonSerializer jsonSerializer = new JsonSerializer();
+            using (StreamWriter sw = new StreamWriter(path))
+            using (JsonWriter Write = new JsonTextWriter(sw))
+            {
+                jsonSerializer.Serialize(Write, AddressDetails);
+            }
+            using (StreamReader sr = new StreamReader(path))
+            using (JsonReader Read = new JsonTextReader(sr))
+            {
+                //Reading the user data from JSON file
+                string json = sr.ReadToEnd();
+                var result = jsonSerializer.Deserialize(Read);
             }
         }
 
