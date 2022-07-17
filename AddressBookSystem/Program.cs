@@ -21,6 +21,10 @@ namespace AddressBookSystem
 
             //Edit Existing contact
             AddressBook.EditExistingContact();
+
+            //Delete the contact using person's name
+            AddressBook.deleteContact();
+
         }
     }
 }
