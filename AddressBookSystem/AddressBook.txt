@@ -1,0 +1,8 @@
+First Name : Neeladri
+Last Name : pulakala
+Address : Ichapuram
+City : Srikakulam
+State : Andhra
+Zip Code: 532312
+Mobile Number : 7855465987
+Email : neela22@gmail.com
