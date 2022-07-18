@@ -33,6 +33,11 @@ namespace AddressBookSystem
                 Console.WriteLine("\nEnter 4 to Get List of Contact in AddressBook");
                 Console.WriteLine("\nEnter 5 to Get List of Address Book in AddressBook");
 
+                //UC8 program
+
+                Console.WriteLine("\nEnter 6 to Search person in City in AddressBook");
+                Console.WriteLine("\nEnter 7 to Search person in State in AddressBook");
+
                 int choice = int.Parse(Console.ReadLine());
 
                 switch (choice)
@@ -52,6 +57,12 @@ namespace AddressBookSystem
                     case 5:
                         AddressBook.AddressBookNames(); //Display the multiple addressbook with unique name and details
                         break;
+                    case 6:
+                        AddressBook.SearchPersonInCity(); //Search person in City
+                        break;
+                    case 7:
+                        AddressBook.SearchPersonInState(); //Search person in State
+                        break;
                     default:
                         Console.WriteLine("Pleasee select valid input");
                         break;
@@ -59,7 +70,6 @@ namespace AddressBookSystem
                 }
 
             }
-
         }
     }
 }
