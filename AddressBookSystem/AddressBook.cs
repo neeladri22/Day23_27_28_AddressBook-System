@@ -54,7 +54,7 @@ namespace AddressBookSystem
             Console.WriteLine("E-Mail :" + person.Email);
         }
 
-        // /Creating the method for Adding new contact
+        // Creating the method for Adding new contact
         public static void AddNewContact()
         {
             Console.Write("Enter First Name: ");
@@ -85,7 +85,13 @@ namespace AddressBookSystem
             PrintContact(person);
             Console.WriteLine("\n************************************\n");
 
+            //Adding Contact into AddressBook
             AddressDetails.Add(person);
+
+            //Adding Unique name to the Address Book
+            Console.WriteLine("\nEnter Name of the Contact details to Store in the Address Book\n");
+            string DairyName = Console.ReadLine();
+            Dairy.Add(DairyName, person);
         }
 
         // Creating the method for editing the existing contact
@@ -167,5 +173,25 @@ namespace AddressBookSystem
             Console.WriteLine("\nPress any key to continue.");
             Console.ReadKey();
         }
+        //Creating the method for displyang the multiple address Book
+        public static void AddressBookNames()
+        {
+            if (Dairy.Count == 0)
+            {
+                Console.WriteLine("Address Book is empty. Press any key to continue.");
+                Console.ReadKey();
+                return;
+            }
+            Console.WriteLine("List of Address Book");
+            foreach (KeyValuePair<string, Contact> dairy in Dairy)
+            {
+
+                Console.WriteLine("Address Book Name : {0} - Details {1}", dairy.Key, dairy.Value);
+                Console.WriteLine("\n************************************\n");
+                PrintContact(dairy.Value);
+                Console.WriteLine("\n************************************\n");
+            }
+        }
+
     }
-    }
+}
