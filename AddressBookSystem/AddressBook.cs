@@ -8,13 +8,18 @@ namespace AddressBookSystem
 {
     public class AddressBook
     {
-        // Creating list for Storing the Contacts of Each Persons details
+        /// Creating list for Storing the Contacts of Each Persons details
         public static List<Contact> AddressDetails = new List<Contact>();
 
         // Creating the dictionary to save the Multiple conatact in Addressbook
-        public static Dictionary<string, Contact> ContactsDetails = new Dictionary<string, Contact>();
+        public static Dictionary<string, Contact> Dairy = new Dictionary<string, Contact>();
 
-        public static Contact person = new Contact();
+        //Creating Dictionary to Store the list of Persons of Same City
+        public static Dictionary<string, Contact> CityDetails = new Dictionary<string, Contact>();
+
+        //Creating Dictionary to Store the list of Persons of Same State
+        public static Dictionary<string, Contact> StateDetails = new Dictionary<string, Contact>();
+        //public static Contact person = new Contact();
 
         //Creating the method for creating the contact person
         public static void createContactPerson()
@@ -229,7 +234,7 @@ namespace AddressBookSystem
             }
         }
 
-        //Serch the person by city name
+        //Serch the person by state name
         public static void SearchPersonInState()
         {
             Console.WriteLine("Please enter the State name to search person: ");
@@ -248,6 +253,34 @@ namespace AddressBookSystem
                 {
                     Console.WriteLine("\nFirst Name is: " + contact.FirstName);
                 }
+            }
+        }
+        //Method for obtaining the list of persongs have same city
+        public static void ListOfPersonsofSameCity()
+        {
+            Console.WriteLine("Enter City Name: ");
+            string city = Console.ReadLine();
+
+            foreach (KeyValuePair<string, Contact> cities in CityDetails)
+            {
+                Console.WriteLine("City : {0} - Persons : {1}", cities.Key, cities.Value);
+                Console.WriteLine("\n************************************\n");
+                PrintContact(cities.Value);
+                Console.WriteLine("\n************************************\n");
+            }
+        }
+        //Method for obtaining the list of persongs have same State
+        public static void ListOfPersonsofSameState()
+        {
+            Console.WriteLine("Enter City Name: ");
+            string state = Console.ReadLine();
+
+            foreach (KeyValuePair<string, Contact> States in StateDetails)
+            {
+                Console.WriteLine("City : {0} - Persons : {1}", States.Key, States.Value);
+                Console.WriteLine("\n************************************\n");
+                PrintContact(States.Value);
+                Console.WriteLine("\n************************************\n");
             }
         }
 
