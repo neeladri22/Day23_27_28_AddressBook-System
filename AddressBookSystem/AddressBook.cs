@@ -364,6 +364,36 @@ namespace AddressBookSystem
                 Console.ReadKey();
             }
         }
+        public static void WriteAddressbookintoCSVFile()
+        {
+            string path = @"F:\h\Day23_27_28 AddressBok\AddressBookSystem\AddressBookSystem\AddressBook.csv";
+
+            Console.WriteLine("********* Reading the File and Write to CSV File **********");
+
+            //Writing the User data in to CSV file
+            using (StreamWriter sw = new StreamWriter(path))
+            using (CsvWriter csvWrite = new CsvWriter(sw, CultureInfo.InvariantCulture))
+            {
+                csvWrite.WriteRecords(AddressDetails);
+            }
+            using (StreamReader sr = new StreamReader(path))
+            using (CsvReader csvRead = new CsvReader(sr, CultureInfo.InvariantCulture))
+            {
+                //Reading the user data from CSV file
+                var result = csvRead.GetRecords<Contact>().ToList();
+                foreach (Contact person in AddressDetails)
+                {
+                    Console.WriteLine("First Name : " + person.FirstName + "\n" +
+                        "Last Name : " + person.LastName + "\n" +
+                        "Address : " + person.Address + "\n" +
+                        "City : " + person.City + "\n" +
+                        "State : " + person.State + "\n" +
+                        "Zip Code: " + person.ZipCode + "\n" +
+                        "Mobile Number : " + person.MobileNumber + "\n" +
+                        "Email : " + person.Email);
+                }
+            }
+        }
 
     }
 }
